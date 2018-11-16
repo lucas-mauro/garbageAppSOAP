@@ -2,13 +2,12 @@ package org.example.www.garbageappfile.projectclasses;
 
 import java.util.ArrayList;
 
-import org.example.www.garbageappfile.Recycling;
-import org.example.www.garbageappfile.User;
+import org.example.www.garbageappfile.AddRecyclingToUser;
 import org.example.www.garbageappfile.UserRecycling;
 
 public class RecyclingProcess {
 	private static RecyclingProcess object;
-	private ArrayList<UserRecycling> recyclings = new ArrayList<UserRecycling>();
+	private ArrayList<AddRecyclingToUser> recyclings = new ArrayList<AddRecyclingToUser>();
 	private static long id = 0;
 
 	public static RecyclingProcess getInstance() {
@@ -18,11 +17,12 @@ public class RecyclingProcess {
 		return object = new RecyclingProcess();
 	};
 
-	public UserRecycling addNewRecycling(UserRecycling recycling) {
+	public AddRecyclingToUser addNewRecycling(AddRecyclingToUser addRecyclingToUser) {
+		RegisterUserProcess regUserProcess = RegisterUserProcess.getInstance(); 
 		id++;
-		recycling.setId(id);
-		recyclings.add(recycling);
-		return recycling;
+		addRecyclingToUser.getUserRecycling().setId(id);
+//		addRecyclingToUser.getUserName()
+		recyclings.add(addRecyclingToUser);
+		return addRecyclingToUser;
 	}
-
 }

@@ -96,8 +96,8 @@
         
             <xsd:complexType name="User">
             	<xsd:sequence>
-            		<xsd:element name="id" type="xsd:long"></xsd:element>
-            		<xsd:element name="firstName" type="xsd:string"></xsd:element>
+                    <xsd:element name="id" type="xsd:long"></xsd:element>
+                    <xsd:element name="firstName" type="xsd:string"></xsd:element>
             		<xsd:element name="lastName" type="xsd:string"></xsd:element>
             		<xsd:element name="userName" type="xsd:string"></xsd:element>
             		<xsd:element name="address" type="xsd:string"></xsd:element>
