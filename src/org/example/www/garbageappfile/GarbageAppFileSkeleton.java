@@ -1,4 +1,3 @@
-
 /**
  * GarbageAppFileSkeleton.java
  *
@@ -26,11 +25,9 @@ public class GarbageAppFileSkeleton {
 			org.example.www.garbageappfile.AddRecyclingToUser addRecyclingToUser) {
 		// TODO : fill this with the necessary business logic
 		AddRecyclingToUserResponse addReToUserRes = new AddRecyclingToUserResponse();
-		addReToUserRes.setUserRecycling(
-				RecyclingProcess.getInstance().addNewRecycling(addRecyclingToUser).getUserRecycling()
-				);
+		addReToUserRes.setUserRecycling(RecyclingProcess.getInstance().addNewRecycling(addRecyclingToUser));
 		return addReToUserRes;
-		
+
 	}
 
 	/**
@@ -57,8 +54,11 @@ public class GarbageAppFileSkeleton {
 	public org.example.www.garbageappfile.GetAllRecyclingByUserResponse getAllRecyclingByUser(
 			org.example.www.garbageappfile.GetAllRecyclingByUser getAllRecyclingByUser) {
 		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException(
-				"Please implement " + this.getClass().getName() + "#getAllRecyclingByUser");
+		GetAllRecyclingByUserResponse response = new GetAllRecyclingByUserResponse();
+		response.setUserRecicling(
+				RecyclingProcess.getInstance().getAllRecyclingByUser(getAllRecyclingByUser.getUserName())
+				);
+		return response;
 	}
 
 	/**

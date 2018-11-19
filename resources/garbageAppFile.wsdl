@@ -40,7 +40,7 @@
       	<xsd:complexType>
       		<xsd:sequence minOccurs="1">
 
-      			<xsd:element name="user" type="tns:User"/>
+      			<xsd:element name="userName" type="xsd:string"/>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>

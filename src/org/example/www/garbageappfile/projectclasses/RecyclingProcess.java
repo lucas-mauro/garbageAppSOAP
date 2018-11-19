@@ -8,7 +8,7 @@ import org.example.www.garbageappfile.UserRecycling;
 
 public class RecyclingProcess {
 	private static RecyclingProcess object;
-	private ArrayList<AddRecyclingToUser> recyclings = new ArrayList<AddRecyclingToUser>();
+	private ArrayList<UserRecycling> recyclings = new ArrayList<UserRecycling>();
 	private static long id = 0;
 
 	public static RecyclingProcess getInstance() {
@@ -18,7 +18,7 @@ public class RecyclingProcess {
 		return object = new RecyclingProcess();
 	};
 
-	public AddRecyclingToUser addNewRecycling(AddRecyclingToUser addRecyclingToUser) {
+	public UserRecycling addNewRecycling(AddRecyclingToUser addRecyclingToUser) {
 		 
 		RegisterUserProcess regUserProcess = RegisterUserProcess.getInstance();
 		User usr = regUserProcess.findByUserName(addRecyclingToUser.getUserName());
@@ -26,8 +26,22 @@ public class RecyclingProcess {
 			id++;
 			addRecyclingToUser.getUserRecycling().setId(id);
 			addRecyclingToUser.getUserRecycling().setUser(usr);
-			recyclings.add(addRecyclingToUser);
+			recyclings.add(addRecyclingToUser.getUserRecycling());
 		}
-		return addRecyclingToUser;
+		return addRecyclingToUser.getUserRecycling();
+	}
+	
+	public UserRecycling[] getAllRecyclingByUser(String userName){
+		ArrayList<UserRecycling> ret_Recyclings = new ArrayList<UserRecycling>();
+		for(int i=0; i<recyclings.size(); i++) {
+			if(recyclings.get(i).getUser().getUserName().equals(userName)) 
+				ret_Recyclings.add(recyclings.get(i));
+		}
+		UserRecycling[] retUsrRecy = new UserRecycling[ret_Recyclings.size()];
+		for(int i=0; i<ret_Recyclings.size(); i++) {
+			retUsrRecy[i] = ret_Recyclings.get(i);
+		}
+		return retUsrRecy;
+		
 	}
 }
