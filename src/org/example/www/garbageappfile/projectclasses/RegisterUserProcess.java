@@ -20,10 +20,19 @@ public class RegisterUserProcess {
 	};
 	
 	public User addNewUser(User user) {
+		//Se deberia chequear la unicidad de user
 		id++;
 		user.setId(id);
 		users.add(user);
 		return user;
+	}
+	
+	public User findByUserName(String userName) {
+		for(int i = 0; i<users.size(); i++) {
+			if (userName.equals(users.get(i).getUserName())) 
+				return users.get(i);
+		}
+		return null;
 	}
 
 }

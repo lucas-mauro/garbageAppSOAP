@@ -7,6 +7,7 @@
  */
 package org.example.www.garbageappfile;
 
+import org.example.www.garbageappfile.projectclasses.RecyclingProcess;
 import org.example.www.garbageappfile.projectclasses.RegisterUserProcess;
 
 /**
@@ -24,10 +25,10 @@ public class GarbageAppFileSkeleton {
 	public org.example.www.garbageappfile.AddRecyclingToUserResponse addRecyclingToUser(
 			org.example.www.garbageappfile.AddRecyclingToUser addRecyclingToUser) {
 		// TODO : fill this with the necessary business logic
-		//throw new java.lang.UnsupportedOperationException(
-			//	"Please implement " + this.getClass().getName() + "#addRecyclingToUser");
 		AddRecyclingToUserResponse addReToUserRes = new AddRecyclingToUserResponse();
-		
+		addReToUserRes.setUserRecycling(
+				RecyclingProcess.getInstance().addNewRecycling(addRecyclingToUser).getUserRecycling()
+				);
 		return addReToUserRes;
 		
 	}
