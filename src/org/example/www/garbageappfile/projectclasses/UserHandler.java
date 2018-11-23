@@ -7,16 +7,16 @@ import org.example.www.garbageappfile.RegisterUser;
 import org.example.www.garbageappfile.RegisterUserResponse;
 import org.example.www.garbageappfile.User;
 
-public class RegisterUserProcess {
-	private static RegisterUserProcess object;
+public class UserHandler {
+	private static UserHandler object;
 	private ArrayList<User> users = new ArrayList<User>();
 	private static long id = 0;
 
-	public static RegisterUserProcess getInstance() {
+	public static UserHandler getInstance() {
 		if (object != null) {
 			return object;
 		}
-		return object = new RegisterUserProcess();
+		return object = new UserHandler();
 	};
 	
 	public User addNewUser(User user) {

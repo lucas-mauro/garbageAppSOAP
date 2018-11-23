@@ -6,8 +6,8 @@
  */
 package org.example.www.garbageappfile;
 
-import org.example.www.garbageappfile.projectclasses.RecyclingProcess;
-import org.example.www.garbageappfile.projectclasses.RegisterUserProcess;
+import org.example.www.garbageappfile.projectclasses.RecyclingHandler;
+import org.example.www.garbageappfile.projectclasses.UserHandler;
 
 /**
  * GarbageAppFileSkeleton java skeleton for the axisService
@@ -25,7 +25,7 @@ public class GarbageAppFileSkeleton {
 			org.example.www.garbageappfile.AddRecyclingToUser addRecyclingToUser) {
 		// TODO : fill this with the necessary business logic
 		AddRecyclingToUserResponse addReToUserRes = new AddRecyclingToUserResponse();
-		addReToUserRes.setUserRecycling(RecyclingProcess.getInstance().addNewRecycling(addRecyclingToUser));
+		addReToUserRes.setUserRecycling(RecyclingHandler.getInstance().addNewRecycling(addRecyclingToUser));
 		return addReToUserRes;
 
 	}
@@ -40,8 +40,11 @@ public class GarbageAppFileSkeleton {
 	public org.example.www.garbageappfile.GetUserTotalRecyclingResponse getUserTotalRecycling(
 			org.example.www.garbageappfile.GetUserTotalRecycling getUserTotalRecycling) {
 		// TODO : fill this with the necessary business logic
-		throw new java.lang.UnsupportedOperationException(
-				"Please implement " + this.getClass().getName() + "#getUserTotalRecycling");
+		GetUserTotalRecyclingResponse response = new GetUserTotalRecyclingResponse();
+		response.setRecycling(
+				RecyclingHandler.getInstance().getTotalRecycling(getUserTotalRecycling.getMaterial())
+				);
+		return response;
 	}
 
 	/**
@@ -56,7 +59,7 @@ public class GarbageAppFileSkeleton {
 		// TODO : fill this with the necessary business logic
 		GetAllRecyclingByUserResponse response = new GetAllRecyclingByUserResponse();
 		response.setUserRecicling(
-				RecyclingProcess.getInstance().getAllRecyclingByUser(getAllRecyclingByUser.getUserName())
+				RecyclingHandler.getInstance().getAllRecyclingByUser(getAllRecyclingByUser.getUserName())
 				);
 		return response;
 	}
@@ -72,7 +75,7 @@ public class GarbageAppFileSkeleton {
 			org.example.www.garbageappfile.RegisterUser registerUser) {
 		User myUser = registerUser.getUser();
 		RegisterUserResponse usrRpns = new RegisterUserResponse();
-		RegisterUserProcess usrProc = RegisterUserProcess.getInstance();
+		UserHandler usrProc = UserHandler.getInstance();
 		usrRpns.setUser(usrProc.addNewUser(myUser));
 		return usrRpns;
 	}

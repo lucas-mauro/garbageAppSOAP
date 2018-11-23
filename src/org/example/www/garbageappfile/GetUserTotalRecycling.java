@@ -27,72 +27,33 @@
 
                         /**
                         * field for Material
-                        * This was an Array!
                         */
 
                         
-                                    protected org.example.www.garbageappfile.Material[] localMaterial ;
+                                    protected org.example.www.garbageappfile.Material localMaterial ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return org.example.www.garbageappfile.Material[]
+                           * @return org.example.www.garbageappfile.Material
                            */
-                           public  org.example.www.garbageappfile.Material[] getMaterial(){
+                           public  org.example.www.garbageappfile.Material getMaterial(){
                                return localMaterial;
                            }
 
                            
                         
-
-
-                               
-                              /**
-                               * validate the array for Material
+                            /**
+                               * Auto generated setter method
+                               * @param param Material
                                */
-                              protected void validateMaterial(org.example.www.garbageappfile.Material[] param){
-                             
-                              if ((param != null) && (param.length < 1)){
-                                throw new java.lang.RuntimeException();
-                              }
-                              
-                              }
-
-
-                             /**
-                              * Auto generated setter method
-                              * @param param Material
-                              */
-                              public void setMaterial(org.example.www.garbageappfile.Material[] param){
-                              
-                                   validateMaterial(param);
-
-                               
-                                      this.localMaterial=param;
-                              }
-
-                               
-                             
-                             /**
-                             * Auto generated add method for the array for convenience
-                             * @param param org.example.www.garbageappfile.Material
-                             */
-                             public void addMaterial(org.example.www.garbageappfile.Material param){
-                                   if (localMaterial == null){
-                                   localMaterial = new org.example.www.garbageappfile.Material[]{};
-                                   }
-
+                               public void setMaterial(org.example.www.garbageappfile.Material param){
                             
+                                            this.localMaterial=param;
+                                    
 
-                               java.util.List list =
-                            org.apache.axis2.databinding.utils.ConverterUtil.toList(localMaterial);
-                               list.add(param);
-                               this.localMaterial =
-                             (org.example.www.garbageappfile.Material[])list.toArray(
-                            new org.example.www.garbageappfile.Material[list.size()]);
-
-                             }
-                             
+                               }
+                            
 
      
      
@@ -153,24 +114,12 @@
                
                    }
                
-                                       if (localMaterial!=null){
-                                            for (int i = 0;i < localMaterial.length;i++){
-                                                if (localMaterial[i] != null){
-                                                 localMaterial[i].serialize(new javax.xml.namespace.QName("","material"),
-                                                           xmlWriter);
-                                                } else {
-                                                   
-                                                           throw new org.apache.axis2.databinding.ADBException("material cannot be null!!");
-                                                    
-                                                }
-
+                                            if (localMaterial==null){
+                                                 throw new org.apache.axis2.databinding.ADBException("material cannot be null!!");
                                             }
-                                     } else {
+                                           localMaterial.serialize(new javax.xml.namespace.QName("","material"),
+                                               xmlWriter);
                                         
-                                               throw new org.apache.axis2.databinding.ADBException("material cannot be null!!");
-                                        
-                                    }
-                                 
                     xmlWriter.writeEndElement();
                
 
@@ -356,27 +305,15 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                 
-                             if (localMaterial!=null) {
-                                 for (int i = 0;i < localMaterial.length;i++){
-
-                                    if (localMaterial[i] != null){
-                                         elementList.add(new javax.xml.namespace.QName("",
-                                                                          "material"));
-                                         elementList.add(localMaterial[i]);
-                                    } else {
-                                        
-                                               throw new org.apache.axis2.databinding.ADBException("material cannot be null !!");
-                                            
+                            elementList.add(new javax.xml.namespace.QName("",
+                                                                      "material"));
+                            
+                            
+                                    if (localMaterial==null){
+                                         throw new org.apache.axis2.databinding.ADBException("material cannot be null!!");
                                     }
-
-                                 }
-                             } else {
-                                 
-                                        throw new org.apache.axis2.databinding.ADBException("material cannot be null!!");
-                                    
-                             }
-
-                        
+                                    elementList.add(localMaterial);
+                                
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -452,48 +389,15 @@
                     
                     reader.next();
                 
-                        java.util.ArrayList list1 = new java.util.ArrayList();
-                    
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("","material").equals(reader.getName())){
                                 
+                                                object.setMaterial(org.example.www.garbageappfile.Material.Factory.parse(reader));
+                                              
+                                        reader.next();
                                     
-                                    
-                                    // Process the array and step past its final element's end.
-                                    list1.add(org.example.www.garbageappfile.Material.Factory.parse(reader));
-                                                                
-                                                        //loop until we find a start element that is not part of this array
-                                                        boolean loopDone1 = false;
-                                                        while(!loopDone1){
-                                                            // We should be at the end element, but make sure
-                                                            while (!reader.isEndElement())
-                                                                reader.next();
-                                                            // Step out of this element
-                                                            reader.next();
-                                                            // Step to next element event.
-                                                            while (!reader.isStartElement() && !reader.isEndElement())
-                                                                reader.next();
-                                                            if (reader.isEndElement()){
-                                                                //two continuous end elements means we are exiting the xml structure
-                                                                loopDone1 = true;
-                                                            } else {
-                                                                if (new javax.xml.namespace.QName("","material").equals(reader.getName())){
-                                                                    list1.add(org.example.www.garbageappfile.Material.Factory.parse(reader));
-                                                                        
-                                                                }else{
-                                                                    loopDone1 = true;
-                                                                }
-                                                            }
-                                                        }
-                                                        // call the converter utility  to convert and set the array
-                                                        
-                                                        object.setMaterial((org.example.www.garbageappfile.Material[])
-                                                            org.apache.axis2.databinding.utils.ConverterUtil.convertToArray(
-                                                                org.example.www.garbageappfile.Material.class,
-                                                                list1));
-                                                            
                               }  // End of if for expected property start element
                                 
                                 else{
