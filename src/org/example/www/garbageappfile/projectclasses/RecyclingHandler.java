@@ -24,7 +24,9 @@ public class RecyclingHandler {
 		 
 		UserHandler regUserProcess = UserHandler.getInstance();
 		User usr = regUserProcess.findByUserName(addRecyclingToUser.getUserName());
-		Material material = MaterialHandler.getInstance().getMaterial(addRecyclingToUser.getUserRecycling().getObject().getId());
+		Material material = MaterialHandler.getInstance().getMaterial(
+				addRecyclingToUser.getUserRecycling().getObject().getId()
+				);
 		if (usr != null) {
 			id++;
 			addRecyclingToUser.getUserRecycling().setId(id);
